@@ -5,4 +5,4 @@ jobs:
       - image: electronuserland/builder:wine
     steps:
       - checkout
-      - run: npm install && npm run release
+      - run: yarn && yarn release --win
