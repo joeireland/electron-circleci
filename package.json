@@ -1,0 +1,91 @@
+{
+  "name": "electron-circleci",
+  "version": "1.0.0",
+  "description": "Example Electron app with MacOS & Windows build integration with Circle CI",
+  "author": "Joe Ireland",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "run-os",
+    "build:win32": "electron-builder --win",
+    "build:darwin": "electron-builder --mac",
+    "clean": "rimraf ./dist",
+    "release": "electron-builder --publish always"
+  },
+  "build": {
+    "appId": "ca.joeireland.electron-circleci",
+    "productName": "Electron CircleCI",
+    "copyright": "MIT",
+    "files": [
+      "**/*",
+      "build/Release/*",
+      "assets/icons/*.*",
+      "assets/icons/mac/*.*",
+      "assets/icons/png/*.*",
+      "assets/icons/win/*.*"
+    ],
+    "mac": {
+      "category": "public.build.automation",
+      "icon": "assets/icons/win/icon.ico"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 440,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "artifactName": "electron-circleci-${version}.${ext}"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable"
+        }
+      ],
+      "icon": "assets/icons/win/icon.ico"
+    },
+    "nsis": {
+      "runAfterFinish": true,
+      "installerIcon": "assets/icons/win/icon.ico",
+      "artifactName": "electron-circleci-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "electron-circleci.exe"
+    },
+    "appx": {
+      "applicationId": "electron.circleci",
+      "backgroundColor": "#464646",
+      "identityName": "electron.circleci",
+      "publisherDisplayName": "joeireland",
+      "artifactName": "electron-circleci-${version}.${ext}"
+    },
+    "publish": [
+      {
+        "provider": "github",
+        "releaseType": "release"
+      }
+    ]
+  },
+  "devDependencies": {
+    "electron": "^5.0.1",
+    "electron-builder": "^20.40.2",
+    "rimraf": "^2.6.3",
+    "run-script-os-fix": "^1.0.4"
+  },
+  "dependencies": {
+    "electron-is-dev": "^1.0.1"
+  }
+}
