@@ -18,7 +18,6 @@ jobs:
       - run: echo $KEYSTORE
       - run: echo $KEYSTORE | base64 --decode - > keystore.p12
       - run: security import keystore.p12 -k build.keychain -P $KEYCHAIN_PASSWORD -T /usr/bin/codesign
-      - run: brew install yarn
       - run: yarn && yarn release --mac
 
 workflows:
