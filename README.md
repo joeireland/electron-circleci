@@ -1,6 +1,9 @@
 # electron-circleci
 Example Electron app with MacOS & Windows build integration with Circle CI
 
+[![CircleCI](https://circleci.com/gh/joeireland/electron-circleci.svg?style=svg)](https://circleci.com/gh/joeireland/electron-circleci)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 ## Running
 In order to run locally type the following:
 

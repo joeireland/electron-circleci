@@ -1,6 +1,6 @@
 {
   "name": "electron-circleci",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Example Electron app with MacOS & Windows build integration with Circle CI",
   "author": "Joe Ireland",
   "main": "main.js",
