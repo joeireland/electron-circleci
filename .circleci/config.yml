@@ -1,27 +1,13 @@
-version: 2
-jobs:
-  build_windows:
-    docker:
-      - image: electronuserland/builder:wine
-    steps:
-      - checkout
-      - run: yarn && yarn release --win
-
-  build_macos:
-    macos:
-      xcode: "10.0.0"
-    steps:
-      - checkout
-      - run: security create-keychain -p $KEYCHAIN_PASSWORD build.keychain
-      - run: security default-keychain -s build.keychain
-      - run: security unlock-keychain -p $KEYCHAIN_PASSWORD build.keychain
-      - run: echo $KEYSTORE | base64 --decode - > keystore.p12
-      - run: security import keystore.p12 -k build.keychain -P $KEYCHAIN_PASSWORD -T /usr/bin/codesign
-      - run: yarn && yarn release --mac
-
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
+version: 2.1
+# Use a package of configuration called an orb.
+orbs:
+  # Declare a dependency on the welcome-orb
+  welcome: circleci/welcome-orb@0.4.1
+# Orchestrate or schedule a set of jobs
 workflows:
-  version: 2
-  build:
+  # Name the workflow "welcome"
+  welcome:
+    # Run the welcome/run job in its own container
     jobs:
-      - build_windows
-      - build_macos
+      - welcome/run
