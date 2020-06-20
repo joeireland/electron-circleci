@@ -4,10 +4,14 @@ jobs:
     docker:
       - image: electronuserland/builder:wine
     steps:
+      env:
+    GITHUB_TOKEN: 1aaaa788a0355d85a23500b29f498a19ae7f341c
       - checkout
       - run: yarn && yarn release --win
 
   build_macos:
+      env:
+    GITHUB_TOKEN: 1aaaa788a0355d85a23500b29f498a19ae7f341c
     macos:
       xcode: "10.0.0"
     steps:
