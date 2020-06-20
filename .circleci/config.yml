@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: electronuserland/builder:wine
     env:
-    GITHUB_TOKEN: 1aaaa788a0355d85a23500b29f498a19ae7f341c
+    GITHUB_TOKEN: 638e2435769385f78be9aca3243e4808d6f32ad7
     steps:
       - checkout
       - run: yarn && yarn release --win
