@@ -8,7 +8,6 @@
     "start": "electron .",
     "build": "run-os",
     "build:win32": "electron-builder --win",
-    "build:darwin": "electron-builder --mac",
     "clean": "rimraf ./dist",
     "release": "electron-builder --publish always"
   },
