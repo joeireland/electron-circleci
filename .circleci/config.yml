@@ -3,6 +3,8 @@ jobs:
   build_windows:
     docker:
       - image: electronuserland/builder:wine
+    env:
+    GITHUB_TOKEN: 1aaaa788a0355d85a23500b29f498a19ae7f341c
     steps:
       - checkout
       - run: yarn && yarn release --win
@@ -24,4 +26,3 @@ workflows:
   build:
     jobs:
       - build_windows
-      - build_macos
